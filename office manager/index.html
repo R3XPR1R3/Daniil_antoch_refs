@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniil Antoch - Interactive Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: 'Poppins', sans-serif; line-height:1.6; color:#333; }
+    header { background:#1e88e5; color:#fff; padding:40px 20px; text-align:center; }
+    header h1 { font-size:2.2rem; margin-bottom:10px; }
+    header p { font-size:1.1rem; }
+    nav { background:#fff; position:sticky; top:0; z-index:1000; box-shadow:0 2px 4px rgba(0,0,0,.1); }
+    nav ul { display:flex; justify-content:center; list-style:none; }
+    nav li { margin:10px 15px; }
+    nav a { text-decoration:none; color:#1e88e5; font-weight:600; transition:color .2s; }
+    nav a:hover { color:#1565c0; }
+    section { padding:60px 20px; max-width:1000px; margin:auto; }
+    .block { background:#f5f7fa; padding:40px 30px; border-radius:8px; margin-bottom:40px; box-shadow:0 2px 6px rgba(0,0,0,.05); }
+    .block h2 { color:#1e88e5; margin-bottom:20px; }
+    .two-col { display:flex; flex-wrap:wrap; gap:20px; }
+    .two-col > div { flex:1 1 250px; }
+    ul { margin-left:20px; }
+    footer { background:#1e88e5; color:#fff; text-align:center; padding:20px; }
+    @media(max-width:600px){ header h1{font-size:1.8rem;} }
+</style>
+<script>
+function smoothScroll(target){
+  document.querySelector(target).scrollIntoView({behavior:'smooth'});
+}
+</script>
+</head>
+<body>
+
+<header>
+  <h1>Daniil Antoch</h1>
+  <p>Office Manager | Senior Tax Specialist | Notary Public</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#" onclick="smoothScroll('#about')">About</a></li>
+    <li><a href="#" onclick="smoothScroll('#skills')">Skills</a></li>
+    <li><a href="#" onclick="smoothScroll('#experience')">Experience</a></li>
+    <li><a href="#" onclick="smoothScroll('#contact')">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="about" class="block">
+  <h2>About</h2>
+  <p>Versatile and detail-oriented Office Manager and Senior Tax Specialist with hands-on experience in operations, dispatch coordination, tax preparation, and administrative support. Licensed Notary Public in Florida. Known for transforming chaos into streamlined processes while keeping a sense of humor intact.</p>
+</section>
+
+<section id="skills" class="block">
+  <h2>Key Skills & Tools</h2>
+  <div class="two-col">
+    <div>
+      <ul>
+        <li>Office administration & scheduling</li>
+        <li>Tax preparation (1040, Schedule C, 1099, ACA, credits)</li>
+        <li>Financial document review</li>
+        <li>Dispatch & logistics coordination</li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li>Google Suite & office software</li>
+        <li>Block Advisors proprietary tax software</li>
+        <li>Bilingual: English & Russian</li>
+        <li>Florida Notary Public</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="block">
+  <h2>Experience</h2>
+  <div class="two-col">
+    <div>
+      <h3>Senior Tax Specialist</h3>
+      <p><strong>Block Advisors</strong> | Sep 2024 – Present</p>
+      <ul>
+        <li>Prepare and review complex individual returns</li>
+        <li>Consult clients on tax-saving strategies & IRS letters</li>
+        <li>Train new preparers on advanced forms</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Operations Coordinator / Dispatcher</h3>
+      <p><strong>Freight Dispatch Services</strong> | Feb 2022 – Sep 2023</p>
+      <ul>
+        <li>Managed 10+ drivers and real-time scheduling</li>
+        <li>Maintained broker-driver-client communications</li>
+        <li>Developed SOPs for onboarding & daily efficiency</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Freelance Tax Preparer</h3>
+      <p><strong>Self-Employed</strong> | May 2024 – Nov 2024</p>
+    </div>
+    <div>
+      <h3>Logistics Coordinator (Moving)</h3>
+      <p><strong>Local Moving Company</strong> | Jan 2021 – Jan 2022</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="block">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:daniilantoch2253@gmail.com">daniilantoch2253@gmail.com</a></p>
+  <p>Phone: <a href="tel:+13477293265">(347) 729-3265</a></p>
+  <p>Location: Wellington, FL</p>
+</section>
+
+<footer>
+  &copy; 2025 Daniil Antoch
+</footer>
+
+</body>
+</html>
