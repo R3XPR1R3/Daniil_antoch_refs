@@ -4,48 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BARCKHAT | Notary & Tax Advisor</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+<script type="module">
+  import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4.0.0/+esm';
+
+  emailjs.init("8ByA_ziSoCVUcI2F_PK3W");
+
+  document.getElementById("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    emailjs.sendForm("service_k03lopi", "template_5spj7up", this)
+      .then(() => alert("✅ Sent!"))
+      .catch(err => alert("❌ Error: " + err));
+  });
+</script>
 </head>
 <body>
 
-<header>
-  <h1>BARCKHAT</h1>
-</header>
+<nav class="navbar">
+  <div class="nav-logo">BARCKHAT</div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#form">Contact</a></li>
+  </ul>
+</nav>
 
-<section class="hero">
+<section class="hero" id="home">
   <h2>Notary & Tax Advisor</h2>
   <p>Quick, Easy, Painless</p>
-  <button class="cta-button" onclick="document.getElementById('form').scrollIntoView({behavior: 'smooth'})">Book a Service</button>
+  <button class="cta-button" onclick="scrollToForm()">Book a Service</button>
 </section>
 
-<section class="why">
-  <h2>Why Choose Us?</h2>
-  <ul>
-    <li>✅ Licensed & Insured in Florida</li>
-    <li>✅ RU/EN Language Support</li>
-    <li>✅ Walk-ins Welcome, No Queue</li>
-    <li>✅ Fast EIN & LLC Registration</li>
-  </ul>
+<section id="about" class="about-section">
+  <div class="parchment">
+    <h2>About BARCKHAT</h2>
+    <p>
+      Hear ye, hear ye! Let it be known that <strong>BARCKHAT</strong> is hereby committed to the faithful execution of notarial and fiscal matters. By the sovereign decree of excellence, we notarize, apostille, and advise with utmost diligence and nobility.
+    </p>
+    <p>
+      Trusted across the land of Florida and beyond, our services cater to subjects both foreign and domestic. May your taxes be just, your documents true, and your business endeavors ever fruitful.
+    </p>
+    <p class="signature">— Daniel of House Barckhat</p>
+  </div>
 </section>
 
-<section class="features">
-  <div class="feature-box">
-    <h3>🖊 Notarization</h3>
+<section class="features" id="services">
+  <button class="feature-box notarization" onclick="selectService('🖊 Notarization - I need document notarized')">
+    <div class="icon-decor">🖊</div>
+    <h3>Notarization</h3>
     <p>Starts at $10 per doc</p>
-  </div>
-  <div class="feature-box">
-    <h3>🌍 Apostille</h3>
+  </button>
+  <button class="feature-box apostille" onclick="selectService('🌍 Apostille - I need an international apostille')">
+    <div class="icon-decor">🌍</div>
+    <h3>Apostille</h3>
     <p>$60 + shipping</p>
-  </div>
-  <div class="feature-box">
-    <h3>💼 Business Registration</h3>
+  </button>
+  <button class="feature-box bizreg" onclick="selectService('💼 Business Registration - I want to register my company')">
+    <div class="icon-decor">💼</div>
+    <h3>Business Registration</h3>
     <p>$200 flat, includes EIN</p>
-  </div>
-  <div class="feature-box">
-    <h3>📊 Tax Consulting</h3>
+  </button>
+  <button class="feature-box taxhelp" onclick="selectService('📊 Tax Consulting - I need help with my taxes')">
+    <div class="icon-decor">📊</div>
+    <h3>Tax Consulting</h3>
     <p>Based on complexity</p>
+  </button>
+</section>
+
+<section class="reviews" id="reviews">
+  <h2>Client Reviews</h2>
+  <div class="review-slider">
+    <div class="review active"><span class="quote">“Fast and friendly notary. Highly recommend!”</span> <span class="author">— Anna P.</span></div>
+    <div class="review"><span class="quote">“Helped me with all my business docs in one day!”</span> <span class="author">— Marcus V.</span></div>
+    <div class="review"><span class="quote">“Very professional tax service. I'll be back next year!”</span> <span class="author">— Karen T.</span></div>
+    <div class="review-progress"><div class="review-bar"></div></div>
   </div>
 </section>
 
@@ -53,7 +89,7 @@
   <input type="text" name="name" placeholder="Your Name" required />
   <input type="email" name="email" placeholder="Your Email" required />
   <input type="tel" name="phone" placeholder="Phone Number" required />
-  <textarea name="message" rows="4" placeholder="Message..." required></textarea>
+  <textarea name="message" id="message" rows="4" placeholder="Message..." required></textarea>
   <button type="submit" class="cta-button">Send Request</button>
 </form>
 
@@ -62,24 +98,46 @@
   © 2025 BARCKHAT • barckhat@gmail.com
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-  (function () {
-    emailjs.init("W0jYRRAlPg1dHewOb");
-  })();
+function scrollToForm() {
+  document.getElementById('form').scrollIntoView({ behavior: 'smooth' });
+}
+function selectService(text) {
+  scrollToForm();
+  setTimeout(() => {
+    document.getElementById('message').value = text;
+  }, 400);
+}
 
-  document.querySelector("form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const data = {
-      name: this.name.value,
-      email: this.email.value,
-      phone: this.phone.value,
-      message: this.message.value
-    };
-    emailjs.send("service_k03lopi", "template_5spj7up", data)
-      .then(() => alert("✅ Request Sent!"), err => alert("❌ Error: " + JSON.stringify(err)));
-    this.reset();
-  });
+let reviewIndex = 0;
+const reviews = document.querySelectorAll(".review");
+const progress = document.querySelector(".review-progress");
+
+function showNextReview() {
+  reviews[reviewIndex].classList.remove("active");
+  reviewIndex = (reviewIndex + 1) % reviews.length;
+  reviews[reviewIndex].classList.add("active");
+
+  const bar = document.querySelector(".review-bar");
+  bar.classList.remove("animate");
+  void bar.offsetWidth; // принудительный reflow
+  bar.classList.add("animate");
+}
+
+setInterval(showNextReview, 5000);
+
+document.getElementById("form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  emailjs.sendForm("service_k03lopi", "template_5spj7up", this)
+    .then(() => {
+      alert("✅ Message sent successfully!");
+      this.reset();
+    }, (error) => {
+      alert("❌ Failed to send message. Please try again.");
+      console.error("EmailJS Error:", error);
+    });
+});
 </script>
 
 </body>
